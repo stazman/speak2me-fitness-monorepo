@@ -266,3 +266,10 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django,dotenv
+
+
+# MacOS
+.DS_Store
+
+# VSCode, Cursor Workspace
+speak2me-fitness-monorepo.code-workspace
