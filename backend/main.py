@@ -11,3 +11,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/test")
+async def read_root():
+    return {"message": "Hello, this is a test endpoint"}
