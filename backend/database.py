@@ -3,13 +3,14 @@ from motor.motor_asyncio import AsyncIOMotorClient
 from beanie import init_beanie, Document
 from dotenv import load_dotenv
 from typing import Optional
+from .models import FoodItem
 
 load_dotenv()
 
 MONGODB_URL = os.getenv("MONGODB_URL")
 
 client = AsyncIOMotorClient(MONGODB_URL)
-db = client["speak2me-fitness"]
+db = client["s2m"]
 
 class User(Document):
     name: str
@@ -26,7 +27,9 @@ async def test_mongo_connection():
         return False
 
 async def init_db():
-    await init_beanie(database=db, document_models=[])
+    client = AsyncIOMotorClient("your-mongodb-connection-string")
+    await init_beanie(database=client["speak2me"], document_models=[FoodItem])
+    
 async def close_mongo_connection():
     client.close()
 
